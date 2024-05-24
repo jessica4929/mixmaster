@@ -40,6 +40,12 @@ const Cocktail = () => {
       ingredients.push(singleDrink[key]);
     }
   });
+  const measures = [];
+  Object.keys(singleDrink).some(function (key) {
+    if (key.includes("strMeasure") && singleDrink[key]) {
+      measures.push(singleDrink[key]);
+    }
+  });
   console.log("ingredients: " + ingredients);
   const {
     strDrink: name,
@@ -81,7 +87,7 @@ const Cocktail = () => {
             {ingredients.map((ingredient, index) => {
               return (
                 <span className="ing" key={index}>
-                  {ingredient}
+                  {measures[index]} {ingredient}
                   {index < ingredients.length - 1 ? ", " : ""}
                 </span>
               );
